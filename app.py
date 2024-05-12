@@ -289,20 +289,6 @@ def get_data():
     print(data)
     # Return a JSON response
     return jsonify(data)
-@app.route('/test', methods=['GET'])
-def get_data2():
-    url = "https://allnovelbook.com/novel/gifted-academy-the-perfect-student/chapter-1"
-    response = requests.get(url)
-    doc = BeautifulSoup(response.text, "html.parser")
-    para = doc.find_all('p')
-    title = doc.find('h2')
-    text_content_list = [p.text for p in para]
-    data = {
-        "title":title.text,
-        "paragraph" :text_content_list,
-    }
-
-    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True) 
